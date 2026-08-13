@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "content/images"
+public_folder: "/content/images"
+
+collections:
+  - name: "stories"
+    label: "Stories"
+    files:
+      - file: "content/stories.json"
+        label: "All Stories"
+        name: "stories"
+        fields:
+          - label: "Stories"
+            name: "stories"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.section}}"
+            fields:
+              - { label: "Section", name: "section", widget: "select", options: ["trending", "stories", "mystery", "emotional", "entertainment", "facts"], hint: "Which page section this story appears in" }
+              - { label: "Tag 1", name: "tag1", widget: "string" }
+              - { label: "Tag 2", name: "tag2", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Read Time", name: "readtime", widget: "string", default: "3 min read" }
+              - { label: "Link (optional)", name: "link", widget: "string", required: false, default: "#" }

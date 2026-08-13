@@ -1,0 +1,184 @@
+{
+  "stories": [
+    {
+      "section": "trending",
+      "tag1": "Trending Story",
+      "tag2": "USA Now",
+      "title": "The 14-second clip that turned a quiet street into an overnight obsession",
+      "description": "A simple moment captured on a phone sent millions of viewers hunting for the full story behind what happened next.",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "3 min read",
+      "link": "#"
+    },
+    {
+      "section": "trending",
+      "tag1": "Social Buzz",
+      "tag2": "Viral Feed",
+      "title": "Why viewers kept replaying this chaotic backstage moment all night",
+      "description": "One accidental camera angle, one reaction, and a comment section that exploded with theories within hours.",
+      "image": "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "4 min read",
+      "link": "#"
+    },
+    {
+      "section": "trending",
+      "tag1": "Must Watch",
+      "tag2": "Tonight",
+      "title": "The performance ending that had the entire internet pausing frame by frame",
+      "description": "Fans are still debating whether the final seconds were planned, improvised, or a perfect accident caught live.",
+      "image": "https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "5 min read",
+      "link": "#"
+    },
+    {
+      "section": "stories",
+      "tag1": "Latest",
+      "tag2": "Just In",
+      "title": "A surprise reveal in broad daylight left hundreds of strangers completely speechless",
+      "description": "What began as an ordinary afternoon turned into a public scene people are now calling one of the wildest crowd reactions of the week.",
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "3 min read",
+      "link": "#"
+    },
+    {
+      "section": "stories",
+      "tag1": "Latest",
+      "tag2": "City Story",
+      "title": "This rooftop video looked cinematic, but one hidden detail changed the whole story",
+      "description": "Viewers first came for the visuals, then stayed to decode the tiny clue that changed how everyone interpreted the moment.",
+      "image": "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "4 min read",
+      "link": "#"
+    },
+    {
+      "section": "stories",
+      "tag1": "Latest",
+      "tag2": "Behind the scenes",
+      "title": "How a near-missed shot became the clip everyone ended up sharing",
+      "description": "The footage almost never made it online, but its rough, real quality made it feel even more impossible to ignore.",
+      "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "2 min read",
+      "link": "#"
+    },
+    {
+      "section": "mystery",
+      "tag1": "Mystery",
+      "tag2": "Case Files",
+      "title": "The hallway sound nobody could explain became a late-night internet obsession",
+      "description": "A clip recorded in near darkness sparked theories ranging from clever editing to something much stranger.",
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "5 min read",
+      "link": "#"
+    },
+    {
+      "section": "mystery",
+      "tag1": "Mystery",
+      "tag2": "Unsolved",
+      "title": "Drivers kept seeing the same figure on this road, but every version of the story is different",
+      "description": "Locals, travelers, and online detectives are piecing together a timeline that only seems to raise more questions.",
+      "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "6 min read",
+      "link": "#"
+    },
+    {
+      "section": "mystery",
+      "tag1": "Mystery",
+      "tag2": "Deep Dive",
+      "title": "The note found inside an old book pointed to a story no one expected to uncover",
+      "description": "What looked like a random scribble turned into a layered search filled with hidden names, dates, and strange coincidences.",
+      "image": "https://images.unsplash.com/photo-1520034475321-cbe63696469a?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "7 min read",
+      "link": "#"
+    },
+    {
+      "section": "emotional",
+      "tag1": "Emotion",
+      "tag2": "Heartfelt",
+      "title": "She thought it was a normal interview until one voice in the room changed everything",
+      "description": "What followed was a reunion so unexpected that viewers across every platform had the same tearful reaction.",
+      "image": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "4 min read",
+      "link": "#"
+    },
+    {
+      "section": "emotional",
+      "tag1": "Emotion",
+      "tag2": "Real Life",
+      "title": "This small act of kindness lasted seconds, but people online said they couldn't stop thinking about it",
+      "description": "The quiet sincerity of the moment made it feel more powerful than the loudest viral stunts on the timeline.",
+      "image": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "3 min read",
+      "link": "#"
+    },
+    {
+      "section": "emotional",
+      "tag1": "Emotion",
+      "tag2": "Uplifting",
+      "title": "The crowd started clapping for one stranger, and the ending felt bigger than anyone expected",
+      "description": "It was one of those rare public moments that felt completely unscripted and instantly universal.",
+      "image": "https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "5 min read",
+      "link": "#"
+    },
+    {
+      "section": "entertainment",
+      "tag1": "Entertainment",
+      "tag2": "Stage Moment",
+      "title": "The live moment fans are still replaying because nobody can agree what really happened",
+      "description": "A split-second reaction, a powerful crowd, and one camera cut made this performance impossible to forget.",
+      "image": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "4 min read",
+      "link": "#"
+    },
+    {
+      "section": "entertainment",
+      "tag1": "Entertainment",
+      "tag2": "Spotlight",
+      "title": "Why this behind-the-scenes reveal hit harder than the main event itself",
+      "description": "The polished show was huge, but the raw backstage footage gave audiences the moment they kept sharing.",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "3 min read",
+      "link": "#"
+    },
+    {
+      "section": "entertainment",
+      "tag1": "Viral Moment",
+      "tag2": "Online Feed",
+      "title": "A casual comment in the middle of a recording session turned into a national talking point",
+      "description": "It was short, funny, slightly chaotic, and exactly the kind of moment that races across every platform at once.",
+      "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "4 min read",
+      "link": "#"
+    },
+    {
+      "section": "facts",
+      "tag1": "Amazing Facts",
+      "tag2": "Science",
+      "title": "The strange reason some sounds feel scarier at night than they do in daylight",
+      "description": "Psychology, environment, and expectation all mix together in ways that make ordinary noises feel cinematic after dark.",
+      "image": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "3 min read",
+      "link": "#"
+    },
+    {
+      "section": "facts",
+      "tag1": "Amazing Facts",
+      "tag2": "Culture",
+      "title": "One tiny detail in everyday American life has a surprisingly wild backstory",
+      "description": "Most people never notice it, but once they do, they tend to fall into a deep rabbit hole of history and weird facts.",
+      "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "4 min read",
+      "link": "#"
+    },
+    {
+      "section": "facts",
+      "tag1": "Amazing Facts",
+      "tag2": "Unexpected",
+      "title": "The real explanation behind a famous myth is almost more surprising than the myth itself",
+      "description": "What millions believed for years turns out to be only half true, and the complete version is even stranger.",
+      "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=80",
+      "readtime": "5 min read",
+      "link": "#"
+    }
+  ]
+}

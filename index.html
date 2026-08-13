@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViralRush USA</title>
+  <style>
+    :root {
+      --bg: #07080b;
+      --bg-elevated: #10131a;
+      --panel: #131720;
+      --panel-2: #171c26;
+      --text: #f4f6fb;
+      --muted: #a6afbd;
+      --soft: #7c8697;
+      --line: rgba(255,255,255,0.1);
+      --color-accent: #ff5a36;
+      --accent-2: #ffd166;
+      --accent-3: #6ae3ff;
+      --shadow: 0 22px 70px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --container: 1180px;
+      --section-gap: clamp(40px, 6vw, 92px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255, 90, 54, 0.14), transparent 30%),
+        linear-gradient(180deg, #090b10 0%, #07080b 50%, #0a0d12 100%);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button { font: inherit; }
+
+    .container {
+      width: min(var(--container), calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 8, 11, 0.84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 24px rgba(255, 90, 54, 0.55), 16px 0 0 rgba(255, 209, 102, 0.3);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      color: var(--muted);
+      font-size: 0.92rem;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .footer-links a:hover,
+    .section-link:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 18px 0 0;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .hero-feature {
+      position: relative;
+      min-height: 72svh;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(7,8,11,0.1), rgba(7,8,11,0.82)),
+        url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: end;
+    }
+
+    .hero-overlay {
+      width: 100%;
+      padding: 26px 18px 22px;
+      background: linear-gradient(180deg, transparent 0%, rgba(7,8,11,0.4) 22%, rgba(7,8,11,0.92) 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 10ch;
+      font-size: clamp(2.5rem, 11vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-copy {
+      max-width: 52ch;
+      color: var(--muted);
+      margin: 16px 0 0;
+      font-size: 0.98rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .hero-actions a,
+    .story-button,
+    .about-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      transition: 0.2s ease;
+    }
+
+    .hero-actions a.primary,
+    .story-button {
+      background: var(--color-accent);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .hero-actions a.secondary,
+    .about-button {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .hero-actions a:hover,
+    .story-button:hover,
+    .about-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .quick-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .quick-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+    }
+
+    .quick-card strong {
+      display: block;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-3);
+      margin-bottom: 10px;
+    }
+
+    .quick-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section {
+      padding: var(--section-gap) 0 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      color: var(--color-accent);
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 6vw, 3rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .section-subtext {
+      margin: 10px 0 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .section-link {
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .story-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+
+    .story-thumb {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .story-body {
+      padding: 16px;
+    }
+
+    .story-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--soft);
+      font-size: 0.77rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    .story-card h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .story-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .story-footer {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .story-time {
+      color: var(--soft);
+      font-size: 0.86rem;
+    }
+
+    .ad-space {
+      margin-top: 28px;
+      border: 1px dashed rgba(255,255,255,0.22);
+      border-radius: 20px;
+      min-height: 140px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+    }
+
+    .ad-space strong {
+      display: block;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .ad-space p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 44ch;
+      font-size: 0.92rem;
+    }
+
+    .about-panel,
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px;
+    }
+
+    .about-panel p,
+    .contact-panel p,
+    .contact-list {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+      font-size: 0.94rem;
+    }
+
+    footer {
+      padding: 34px 0 42px;
+      margin-top: var(--section-gap);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-note {
+      margin: 0;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (min-width: 700px) {
+      .container { width: min(var(--container), calc(100% - 36px)); }
+      .hero-overlay { padding: 34px 28px 28px; }
+      .quick-strip { grid-template-columns: repeat(4, 1fr); }
+      .story-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-panel,
+      .contact-panel { padding: 24px; }
+      .footer-grid {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container { width: min(var(--container), calc(100% - 56px)); }
+      .hero-shell {
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 18px;
+      }
+      .hero-feature { min-height: 78svh; }
+      .hero-overlay { padding: 42px 34px 34px; }
+      .nav { padding: 16px 0; }
+      .nav-links { gap: 24px; }
+      .story-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .about-panel,
+      .contact-panel {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="ViralRush USA home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>ViralRush USA</strong>
+          <span>Entertainment & Viral Stories</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#trending">Trending</a>
+        <a href="#stories">Stories</a>
+        <a href="#entertainment">Entertainment</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-shell">
+        <article class="hero-feature">
+          <div class="hero-overlay">
+            <span class="eyebrow">USA viral media</span>
+            <h1>Stories You Can't Stop Watching</h1>
+            <p class="hero-copy">
+              ViralRush USA is built for the kind of stories people tap, watch, share, and talk about. From mystery drops and emotional real-life moments to entertainment buzz and wild facts, the experience is designed for audiences arriving from Facebook Reels, YouTube Shorts, and TikTok.
+            </p>
+            <div class="hero-actions">
+              <a class="primary" href="#trending">Watch the Trending Feed</a>
+              <a class="secondary" href="#stories">Browse Latest Stories</a>
+            </div>
+          </div>
+        </article>
+
+        <aside class="quick-strip" aria-label="Story categories">
+          <div class="quick-card">
+            <strong>Trending</strong>
+            <p>Fast-moving stories built for instant curiosity and shareability.</p>
+          </div>
+          <div class="quick-card">
+            <strong>Mystery</strong>
+            <p>Unexplained twists, strange discoveries, and internet rabbit holes.</p>
+          </div>
+          <div class="quick-card">
+            <strong>Emotion</strong>
+            <p>Human moments that stop the scroll and stay with the audience.</p>
+          </div>
+          <div class="quick-card">
+            <strong>Entertainment</strong>
+            <p>Viral clips, culture reactions, celebrity chatter, and big moments.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="trending">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Hot right now</span>
+            <h2>Trending Stories</h2>
+            <p class="section-subtext">High-impact stories designed to grab attention quickly on mobile and keep visitors moving deeper into the site.</p>
+          </div>
+          <a class="section-link" href="#stories">See all stories</a>
+        </div>
+
+        <div class="story-grid" data-section="trending"></div>
+
+        <div class="ad-space" aria-label="Advertisement placeholder between sections">
+          <div>
+            <strong>Advertisement Space</strong>
+            <p>Reserved area for future Adsterra placement. Kept visually separate so ads can be inserted later without breaking the reading flow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Fresh updates</span>
+            <h2>Latest Stories</h2>
+            <p class="section-subtext">A scrolling library of new stories built for quick mobile reading, binge-worthy sessions, and repeat visits.</p>
+          </div>
+        </div>
+
+        <div class="story-grid" data-section="stories"></div>
+
+        <div class="ad-space" aria-label="Advertisement placeholder between sections">
+          <div>
+            <strong>Advertisement Space</strong>
+            <p>Reserved placement for a responsive future ad unit sized to work cleanly between article rows on mobile and desktop.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mystery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Unknown and unexplained</span>
+            <h2>Mystery Stories</h2>
+            <p class="section-subtext">Stories that create suspense, invite theories, and keep people tapping for the next clue.</p>
+          </div>
+        </div>
+
+        <div class="story-grid" data-section="mystery"></div>
+
+        <div class="ad-space" aria-label="Advertisement placeholder between sections">
+          <div>
+            <strong>Advertisement Space</strong>
+            <p>Future Adsterra space designed as a clean break between intense suspense stories and the next content block.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="emotional">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Human stories</span>
+            <h2>Emotional Stories</h2>
+            <p class="section-subtext">Moments of kindness, reunion, resilience, and surprise that connect instantly with a broad USA audience.</p>
+          </div>
+        </div>
+
+        <div class="story-grid" data-section="emotional"></div>
+      </div>
+    </section>
+
+    <section class="section" id="entertainment">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Culture and buzz</span>
+            <h2>Entertainment & Viral Moments</h2>
+            <p class="section-subtext">Big reactions, memorable performances, internet-famous clips, and the moments everyone suddenly starts talking about.</p>
+          </div>
+        </div>
+
+        <div class="story-grid" data-section="entertainment"></div>
+
+        <div class="ad-space" aria-label="Advertisement placeholder between sections">
+          <div>
+            <strong>Advertisement Space</strong>
+            <p>Reserved ad placement for monetization between entertainment coverage and evergreen fact-based content.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="facts">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Scroll-stopping trivia</span>
+            <h2>Amazing Facts</h2>
+            <p class="section-subtext">Short, surprising reads that are easy to consume on mobile and perfect for social-driven traffic spikes.</p>
+          </div>
+        </div>
+
+        <div class="story-grid" data-section="facts"></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">About the brand</span>
+            <h2>Built for binge-worthy digital storytelling</h2>
+          </div>
+        </div>
+
+        <div class="about-panel">
+          <div>
+            <p>ViralRush USA is positioned as a modern entertainment and viral stories platform focused on attention-grabbing storytelling for a USA audience. The design direction is cinematic, mobile-first, and built to feel fast and premium without getting heavy or cluttered.</p>
+          </div>
+          <div>
+            <p>The structure is ideal for expanding into category pages, story detail pages, social embeds, video modules, newsletter units, and future ad placements while keeping the homepage clean and easy to scan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Contact</span>
+            <h2>Stay connected with ViralRush USA</h2>
+            <p class="section-subtext">A simple contact area for editorial questions, feedback, partnerships, or general inquiries.</p>
+          </div>
+        </div>
+
+        <div class="contact-panel">
+          <div>
+            <p>This section is intentionally clean so you can later swap in your real contact form, email address, or social channels without changing the overall feel of the site.</p>
+          </div>
+          <div>
+            <ul class="contact-list">
+              <li>Email: hello@viralrushusa.com</li>
+              <li>Focus: viral stories, entertainment, mystery, emotional moments, amazing facts</li>
+              <li>Audience: mobile-first visitors from social platforms across the USA</li>
+            </ul>
+            <a class="about-button" href="mailto:hello@viralrushusa.com">Contact Editorial Team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p class="footer-note">© 2026 ViralRush USA. Dark, cinematic storytelling for a mobile-first entertainment audience.</p>
+      <div class="footer-links">
+        <a href="#trending">Trending</a>
+        <a href="#stories">Stories</a>
+        <a href="#entertainment">Entertainment</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
