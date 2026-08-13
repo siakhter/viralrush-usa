@@ -37,6 +37,21 @@ collections:
               - { label: "Tag 2", name: "tag2", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Full Story Content (shown on Read Story page)", name: "content", widget: "text", required: false, hint: "This is the full article text shown when someone clicks Read Story. Separate paragraphs with a blank line." }
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Read Time", name: "readtime", widget: "string", default: "3 min read" }
               - { label: "Link (optional)", name: "link", widget: "string", required: false, default: "#" }
+
+  - name: "ads"
+    label: "Advertisements"
+    files:
+      - file: "content/ads.json"
+        label: "Ad Placements"
+        name: "ads"
+        fields:
+          - { label: "Ad Code — Trending section (below)", name: "ad_trending", widget: "text", required: false, hint: "Paste raw Adsterra ad code (HTML/JS). Leave empty to show the placeholder." }
+          - { label: "Ad Code — Latest Stories section (below)", name: "ad_stories", widget: "text", required: false, hint: "Paste raw Adsterra ad code (HTML/JS). Leave empty to show the placeholder." }
+          - { label: "Ad Code — Mystery Stories section (below)", name: "ad_mystery", widget: "text", required: false, hint: "Paste raw Adsterra ad code (HTML/JS). Leave empty to show the placeholder." }
+          - { label: "Ad Code — Entertainment section (below)", name: "ad_entertainment", widget: "text", required: false, hint: "Paste raw Adsterra ad code (HTML/JS). Leave empty to show the placeholder." }
+          - { label: "Ad Code — Story Page (top, above article)", name: "ad_article_top", widget: "text", required: false, hint: "Shows on the Read Story page, above the article content." }
+          - { label: "Ad Code — Story Page (bottom, below article)", name: "ad_article_bottom", widget: "text", required: false, hint: "Shows on the Read Story page, below the article content." }
