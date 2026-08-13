@@ -462,6 +462,98 @@
         align-items: start;
       }
     }
+
+    .about-button {
+      cursor: pointer;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+    }
+
+    .contact-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4,5,7,0.72);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 16px;
+    }
+
+    .contact-modal-overlay[hidden] { display: none; }
+
+    .contact-modal {
+      position: relative;
+      width: min(480px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-modal h3 {
+      margin: 0 0 18px;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .contact-field {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .contact-field span {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--text);
+      font: inherit;
+      resize: vertical;
+    }
+
+    .contact-form-hidden {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .contact-submit {
+      width: 100%;
+      margin-top: 6px;
+      border: none;
+    }
+
+    .contact-form-success { color: var(--accent-3); margin-top: 12px; font-size: 0.9rem; }
+    .contact-form-error { color: var(--color-accent); margin-top: 12px; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -661,28 +753,53 @@
         <div class="section-head">
           <div>
             <span class="section-kicker">Contact</span>
-            <h2>Stay connected with ViralRush USA</h2>
-            <p class="section-subtext">A simple contact area for editorial questions, feedback, partnerships, or general inquiries.</p>
+            <h2 id="contact-heading">Stay connected with ViralRush USA</h2>
+            <p class="section-subtext" id="contact-subtext">A simple contact area for editorial questions, feedback, partnerships, or general inquiries.</p>
           </div>
         </div>
 
         <div class="contact-panel">
           <div>
-            <p>This section is intentionally clean so you can later swap in your real contact form, email address, or social channels without changing the overall feel of the site.</p>
+            <p id="contact-description">This section is intentionally clean so you can later swap in your real contact form, email address, or social channels without changing the overall feel of the site.</p>
           </div>
           <div>
             <ul class="contact-list">
-              <li>Email: hello@viralrushusa.com</li>
-              <li>Focus: viral stories, entertainment, mystery, emotional moments, amazing facts</li>
-              <li>Audience: mobile-first visitors from social platforms across the USA</li>
+              <li>Email: <span id="contact-email">hello@viralrushusa.com</span></li>
+              <li id="contact-focus-item">Focus: viral stories, entertainment, mystery, emotional moments, amazing facts</li>
+              <li id="contact-audience-item">Audience: mobile-first visitors from social platforms across the USA</li>
             </ul>
-            <a class="about-button" href="mailto:hello@viralrushusa.com">Contact Editorial Team</a>
+            <button type="button" class="about-button" id="contact-open-form">Contact Editorial Team</button>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <div id="contact-modal-overlay" class="contact-modal-overlay" hidden>
+    <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button type="button" class="contact-modal-close" id="contact-modal-close" aria-label="Close">&times;</button>
+      <h3 id="contact-modal-title">Contact Editorial Team</h3>
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="contact-form-hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <label class="contact-field">
+          <span>Name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label class="contact-field">
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label class="contact-field">
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="about-button contact-submit">Send Message</button>
+        <p id="contact-form-success" class="contact-form-success" hidden>Thanks — your message has been sent.</p>
+        <p id="contact-form-error" class="contact-form-error" hidden>Something went wrong. Please try again or email us directly.</p>
+      </form>
+    </div>
+  </div>
   <footer>
     <div class="container footer-grid">
       <p class="footer-note">© 2026 ViralRush USA. Dark, cinematic storytelling for a mobile-first entertainment audience.</p>
