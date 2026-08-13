@@ -4,7 +4,16 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function slugify(text) {
+  return (text || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function renderCard(story) {
+  const storyUrl = "story.html?s=" + encodeURIComponent(slugify(story.title));
   return `
     <article class="story-card">
       <img class="story-thumb" src="${escapeHtml(story.image)}" alt="${escapeHtml(story.title)}" />
@@ -14,7 +23,7 @@ function renderCard(story) {
         <p>${escapeHtml(story.description)}</p>
         <div class="story-footer">
           <span class="story-time">${escapeHtml(story.readtime)}</span>
-          <a class="story-button" href="${escapeHtml(story.link || "#")}">Read Story</a>
+          <a class="story-button" href="${storyUrl}">Read Story</a>
         </div>
       </div>
     </article>
@@ -106,3 +115,35 @@ if (contactForm) {
       });
   });
 }
+
+function injectAdCode(containerId, rawCode) {
+  const container = document.getElementById(containerId);
+  if (!container || !rawCode || !rawCode.trim()) return;
+
+  container.innerHTML = "";
+  const temp = document.createElement("div");
+  temp.innerHTML = rawCode;
+
+  Array.from(temp.childNodes).forEach((node) => {
+    if (node.tagName === "SCRIPT") {
+      const script = document.createElement("script");
+      Array.from(node.attributes).forEach((attr) => script.setAttribute(attr.name, attr.value));
+      script.text = node.textContent;
+      container.appendChild(script);
+    } else {
+      container.appendChild(node.cloneNode(true));
+    }
+  });
+}
+
+fetch("content/ads.json")
+  .then((res) => res.json())
+  .then((ads) => {
+    injectAdCode("ad-slot-trending", ads.ad_trending);
+    injectAdCode("ad-slot-stories", ads.ad_stories);
+    injectAdCode("ad-slot-mystery", ads.ad_mystery);
+    injectAdCode("ad-slot-entertainment", ads.ad_entertainment);
+  })
+  .catch((err) => {
+    console.error("Could not load ads:", err);
+  });
