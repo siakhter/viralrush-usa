@@ -6,6 +6,20 @@ media_folder: "content/images"
 public_folder: "/content/images"
 
 collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - file: "content/settings.json"
+        label: "General Settings"
+        name: "settings"
+        fields:
+          - { label: "Contact Section Heading", name: "contact_heading", widget: "string" }
+          - { label: "Contact Section Subtext", name: "contact_subtext", widget: "text" }
+          - { label: "Contact Description Paragraph", name: "contact_description", widget: "text" }
+          - { label: "Contact Email", name: "contact_email", widget: "string" }
+          - { label: "Focus (topics)", name: "contact_focus", widget: "string" }
+          - { label: "Audience Description", name: "contact_audience", widget: "string" }
+
   - name: "stories"
     label: "Stories"
     files:
